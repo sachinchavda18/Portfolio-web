@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../css/FormStyle.css";
 import { makePOSTRequest } from "../utils/serverHerlper";
-import CloudinaryUpload from "./CloudinaryUpload";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "./UploadWidget";
 
@@ -12,7 +11,7 @@ const UploadForm = () => {
   const [view, setView] = useState("");
   const [source, setSource] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [uploadedSongFileName, setUploadedSongFileName] = useState();
+  const [uploadedFileName, setUploadedFileName] = useState();
   const navigate = useNavigate();
 
   const submitProject = async () => {
@@ -60,7 +59,7 @@ const UploadForm = () => {
             setName={setUploadedSongFileName}
           />
           )} */}
-        <UploadWidget setUrl={setImgUrl} setName={setUploadedSongFileName} />
+        <UploadWidget setUrl={setImgUrl} setName={setUploadedFileName} />
 
         <label htmlFor="view">View Url </label>
         <input

@@ -9,7 +9,7 @@ import {useCookies} from "react-cookie";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cookies, setCookies] = useCookies(["email"])
+  const [cookie, setCookie] = useCookies(["email"])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const LoginForm = () => {
       return;
     }
     const date = new Date()
-    setCookies("email",email,{path:"/"})
+    setCookie("email",email,{path:"/"})
     alert(response.message);
     navigate("/");
   };

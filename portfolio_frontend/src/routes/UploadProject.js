@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar"
 import Footer from '../components/Footer'
 import HeroImg2 from '../components/HeroImg2'
 import UploadForm from "../components/UploadForm";
-import UploadWidget from "../components/UploadWidget";
 const UploadProject = () => {
   return (
     <div>

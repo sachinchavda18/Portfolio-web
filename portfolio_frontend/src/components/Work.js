@@ -1,7 +1,6 @@
 import "../css/WorkCardStyle.css";
 import React, { useEffect, useState } from "react";
 import WorkCard from "./WorkCard";
-import WorkCardData from "./WorkCardData";
 import {makeGETRequest} from "../utils/serverHerlper"
 
 const Work = () => {
