@@ -10,9 +10,10 @@ const session = require("express-session");
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+require("dotenv").config();
 
 const mongoUrl =
-  "mongodb+srv://portfolio_admin:portfolio_admin123@cluster1.zota6hd.mongodb.net/portfolio";
+  `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster1.zota6hd.mongodb.net/portfolio`;
 mongoose
   .connect(mongoUrl, {
     useNewUrlParser: true,
