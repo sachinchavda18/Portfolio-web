@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="location">
             <FaHome size={20} style={{ color: "#fff", marginRight: "2rem" }} />
             <div>
-              <p>123 Housing Society.</p>
+              <p>Plot No.94 Azadnagar, Sarkhej.</p>
               <p>Ahemedabad.</p>
             </div>
           </div>
@@ -36,7 +36,7 @@ const Footer = () => {
                 size={20}
                 style={{ color: "#fff", marginRight: "2rem" }}
               />
-              info@gmail.com
+              sachinchavda321@gmail.com
             </h4>
           </div>
         </div>
@@ -44,7 +44,7 @@ const Footer = () => {
         <div className="right">
           <h4>About the company</h4>
           <p>
-            This is me Fahimul kabir. CEO & Founder of Tech2etc. I enjoy
+            This is me Sachin Chavda. Student at LJ University. I enjoy
             discussing new projects and design challenges.
           </p>
           <div className="social">
