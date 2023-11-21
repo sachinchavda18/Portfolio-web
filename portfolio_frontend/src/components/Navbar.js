@@ -45,16 +45,20 @@ const Navbar = () => {
         <li>
           <Link to="/contact">Contact</Link>
         </li>
-        {cookie.email && <li><Link to="/upload">Upload</Link> </li>}
-        <li>
+        {cookie.email && (
+          <li>
+            <Link to="/upload">Upload</Link>{" "}
+          </li>
+        )}
+        {/* <li>
           {cookie.email ? (
-            <Link onClick={ handleLogout}>Logout</Link>
+            <Link onClick={handleLogout}>Logout</Link>
           ) : (
             <Link to="/login" onClick={() => setIsLogin(true)}>
               Login
             </Link>
           )}
-        </li>
+        </li> */}
       </ul>
       <div className="hamburger" onClick={handleClick}>
         {click ? (
