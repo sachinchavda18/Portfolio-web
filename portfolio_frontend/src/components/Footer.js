@@ -6,6 +6,8 @@ import {
   FaPhone,
   FaHome,
   FaTwitter,
+  FaGithub,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -48,20 +50,26 @@ const Footer = () => {
             discussing new projects and design challenges.
           </p>
           <div className="social">
-            <Link to={"http://facebook.com"} target="_blank">
-              <FaFacebook
+            <Link to={"https://wa.me/qr/DLJCZRIZG6NPN1"} target="_blank">
+              <FaWhatsapp
                 size={30}
                 style={{ color: "#fff", marginRight: "1rem" }}
               />
             </Link>
-            <Link to={"http://twitter.com"} target="_blank">
+            <Link to={"https://twitter.com/sachinchavda177?t=ZGvlMAKVwr-1xIjXARIL0w&s=08"} target="_blank">
               <FaTwitter
                 size={30}
                 style={{ color: "#fff", marginRight: "1rem" }}
               />
             </Link>
-            <Link to={"http://linkedin.com"} target="_blank">
+            <Link to={"https://www.linkedin.com/in/sachin-chavda-177649266"} target="_blank">
               <FaLinkedin
+                size={30}
+                style={{ color: "#fff", marginRight: "1rem" }}
+              />
+            </Link>
+            <Link to={"http://github.com/sachinchavda18"} target="_blank">
+              <FaGithub
                 size={30}
                 style={{ color: "#fff", marginRight: "1rem" }}
               />
