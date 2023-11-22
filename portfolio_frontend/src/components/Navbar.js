@@ -50,15 +50,17 @@ const Navbar = () => {
             <Link to="/upload">Upload</Link>{" "}
           </li>
         )}
-        {/* <li>
-          {cookie.email ? (
+
+        {cookie.email ? (
+          <li>
             <Link onClick={handleLogout}>Logout</Link>
-          ) : (
-            <Link to="/login" onClick={() => setIsLogin(true)}>
-              Login
-            </Link>
-          )}
-        </li> */}
+          </li>
+        ) : (
+          ""
+          // <li><Link to="/login" onClick={() => setIsLogin(true)}>
+          //   Login
+          // </Link></li>
+        )}
       </ul>
       <div className="hamburger" onClick={handleClick}>
         {click ? (

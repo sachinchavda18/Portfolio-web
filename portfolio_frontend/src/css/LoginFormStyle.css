@@ -10,6 +10,10 @@ label {
     max-width: 600px;
 }
 
+.form button{
+    margin-top: .5rem ;
+}
+
 .form label {
     margin-bottom: 0.5rem;
 }
@@ -73,4 +77,50 @@ textarea {
     cursor: pointer;
     color:#8c6eff;
     border-bottom: 1px solid #8c6eff;
+}
+
+.not-login{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 1rem;
+    margin: auto;
+    max-width: 600px;
+    border-radius:1rem  ;
+}
+.not-login div{
+    padding-bottom: 1rem  ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.not-login .go-back-home{
+    text-align: center;
+}
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .modal-container {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal-container {
+        width: 70%;
+    }
+
+    .form input,
+    .form textarea {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+    label{
+        font-size: .8rem ;
+    }
+}
+
+@media screen and (max-width: 601px) {
+    .modal-container {
+        width: 80%;
+    }
 }

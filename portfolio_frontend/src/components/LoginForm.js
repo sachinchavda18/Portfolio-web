@@ -4,12 +4,12 @@ import "../css/LoginFormStyle.css";
 import { FaTimes } from "react-icons/fa";
 import { makePOSTRequest } from "../utils/serverHerlper";
 import { Link, useNavigate } from "react-router-dom";
-import {useCookies} from "react-cookie";
+import { useCookies } from "react-cookie";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cookie, setCookie] = useCookies(["email"])
+  const [cookie, setCookie] = useCookies(["email"]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,8 +26,8 @@ const LoginForm = () => {
       alert(response.err);
       return;
     }
-    const date = new Date()
-    setCookie("email",email,{path:"/"})
+    const date = new Date();
+    setCookie("email", email, { path: "/" });
     alert(response.message);
     navigate("/");
   };
@@ -64,12 +64,10 @@ const LoginForm = () => {
             </button>
           </div>
           <div className="additional">
-            Don't have an account?  
-            {
-              <Link to={"/signup"}>
-                <span>Create An Account</span>
-              </Link>
-            }
+            Don't have an account?
+            <Link to={"/signup"}>
+              <span>Create An Account</span>
+            </Link>
           </div>
         </div>
       </div>

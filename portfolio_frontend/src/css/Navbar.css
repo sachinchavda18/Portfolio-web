@@ -42,7 +42,7 @@ color: #a337ff;
   cursor: pointer;
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1024px) {
   .hamburger {
     display: initial;
   }
@@ -66,10 +66,24 @@ color: #a337ff;
   }
 
   .nav-menu li {
-    padding: 1rem 0;
+    padding: .5rem 2rem; 
+    margin: .5rem 0;
+    width: 50%; 
+    background-color: #222;
+    border-radius: 1rem;
   }
 
   .nav-menu a {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav-menu li {
+    padding: .5rem 1rem;
+  }
+
+  .nav-menu a {
+    font-size: 1.2rem;
   }
 }
