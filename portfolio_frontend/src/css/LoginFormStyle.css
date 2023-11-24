@@ -47,6 +47,7 @@ textarea {
     padding: 1rem 1rem ;
     border-radius: 1rem ;
     width: 30%;
+    overflow-y: auto;
 }
 
 .close-menu{
