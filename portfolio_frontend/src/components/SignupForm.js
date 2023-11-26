@@ -1,7 +1,7 @@
 // LoginForm.js
 import React, { useEffect, useState } from "react";
 import "../css/LoginFormStyle.css";
-import { FaSmile, FaTimes } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaSmile, FaTimes } from "react-icons/fa";
 import { makePOSTRequest } from "../utils/serverHerlper";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -15,8 +15,7 @@ const SignupForm = () => {
   const [cookie, setCookie] = useCookies(["email"]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -111,27 +110,61 @@ const SignupForm = () => {
               }}
             />
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password "
-              name="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                handleInputChange();
-              }}
-            />
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password "
+                name="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  handleInputChange();
+                }}
+              />
+              {showPassword ? (
+                <FaEyeSlash
+                  size={20}
+                  style={{ color: "white", right: " 3rem", bottom: "17.8rem" }}
+                  className="password-eye"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <FaEye
+                  size={20}
+                  style={{ color: "white", right: " 3rem", bottom: "17.8rem"  }}
+                  className="password-eye"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
+            </div>
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password again "
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-                handleInputChange();
-              }}
-            />
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password again "
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  handleInputChange();
+                }}
+              />
+              {showPassword ? (
+                <FaEyeSlash
+                  size={20}
+                  style={{ color: "white" , right: " 3rem", bottom: "11.8rem" }}
+                  className="password-eye"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <FaEye
+                  size={20}
+                  style={{ color: "white" , right: " 3rem", bottom: "11.8rem" }}
+                  className="password-eye"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
+            </div>
 
             {error && <ErrorMsg errText={error} closeError={closeError} />}
 

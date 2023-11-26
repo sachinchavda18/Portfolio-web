@@ -98,6 +98,21 @@ textarea {
 .not-login .go-back-home{
     text-align: center;
 }
+
+.password-input{
+    width: 100%;
+}
+.password-input input{
+    width: 100%;
+}
+.password-input .password-eye{
+    position: absolute;
+    /* right: 3rem ;
+    bottom: 11.8rem ; */
+}
+
+
+
 /* Media Queries */
 @media screen and (max-width: 1024px) {
     .modal-container {

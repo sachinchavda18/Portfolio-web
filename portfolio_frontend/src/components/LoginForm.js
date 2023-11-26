@@ -1,7 +1,7 @@
 // LoginForm.js
 import React, { useEffect, useState } from "react";
 import "../css/LoginFormStyle.css";
-import { FaTimes } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { makePOSTRequest } from "../utils/serverHerlper";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -13,6 +13,7 @@ const LoginForm = () => {
   const [cookie, setCookie] = useCookies(["email"]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   // useEffect(() => {
   //   document.body.style.overflowY = "hidden";
@@ -30,7 +31,7 @@ const LoginForm = () => {
         return;
       }
       const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 10 * 60 * 1000);
+      expirationDate.setTime(expirationDate.getTime() + 30 * 60 * 1000);
 
       // const newEncodedEmail = encodeEmail(email) + mainEncodedEmail(email);
       setCookie("email", encodeEmail(email), {
@@ -84,13 +85,30 @@ const LoginForm = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password "
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password "
+                name={"password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {showPassword ? (
+                <FaEyeSlash
+                  size={20}
+                  style={{ color: "white", right: " 3rem", bottom: "11.8rem" }}
+                  className="password-eye"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <FaEye
+                  size={20}
+                  style={{ color: "white", right: " 3rem", bottom: "11.8rem" }}
+                  className="password-eye"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
+            </div>
             {error && <ErrorMsg errText={error} closeError={closeError} />}
             <button type="submit" className="btn" onClick={handleLogin}>
               Login

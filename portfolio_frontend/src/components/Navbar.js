@@ -56,15 +56,17 @@ const Navbar = () => {
             <Link onClick={handleLogout}>Logout</Link>
           </li>
         ) : (
-          ""
-          // <li><Link to="/login" onClick={() => setIsLogin(true)}>
-          //   Login
-          // </Link></li>
+          // ""
+          <li>
+            <Link to="/login" onClick={() => setIsLogin(true)}>
+              Login
+            </Link>
+          </li>
         )}
       </ul>
       <div className="hamburger" onClick={handleClick}>
         {click ? (
-          <FaTimes size={20} style={{ color: "#fff"}} />
+          <FaTimes size={20} style={{ color: "#fff" }} />
         ) : (
           <FaBars size={20} style={{ color: "#fff" }} />
         )}
