@@ -3,6 +3,8 @@ import "../css/FormStyle.css";
 import { makePOSTRequest } from "../utils/serverHerlper";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "./UploadWidget";
+import ErrorMsg from "./ErrorMsg";
+import SuccessMsg from "./SuccessMsg";
 
 const UploadForm = () => {
   const [title, setTitle] = useState("");
@@ -11,18 +13,31 @@ const UploadForm = () => {
   const [view, setView] = useState("");
   const [source, setSource] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [uploadedFileName, setUploadedFileName] = useState();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const submitProject = async () => {
-    const data = { title, thumbnail: imgUrl, text, view, source };
-    const response = await makePOSTRequest("/project/create", data);
-    if (response.err) {
-      alert("Could not create Project");
-      return;
+    try {
+      const data = { title, thumbnail: imgUrl, text, view, source };
+      const response = await makePOSTRequest("/project/create", data);
+      if (response.err) {
+        setError("Could not create Project");
+      } else {
+        setSuccess("Project created successfully");
+        setTimeout(() => {
+          setSuccess("");
+          navigate("/");
+        }, 2000);
+      }
+    } catch (err) {
+      setError("Could not create Project");
     }
-    alert("Success");
-    navigate("/");
+  };
+
+  const closeErrorSuccess = () => {
+    setSuccess("");
+    setError("");
   };
 
   return (
@@ -59,7 +74,7 @@ const UploadForm = () => {
             setName={setUploadedSongFileName}
           />
           )} */}
-        <UploadWidget setUrl={setImgUrl} setName={setUploadedFileName} />
+        <UploadWidget setUrl={setImgUrl}  />
 
         <label htmlFor="view">View Url </label>
         <input
@@ -93,7 +108,10 @@ const UploadForm = () => {
             setText(e.target.value);
           }}
         />
-
+        {error && <ErrorMsg errText={error} closeError={closeErrorSuccess} />}
+        {success && (
+          <SuccessMsg successText={success} closeSuccess={closeErrorSuccess} />
+        )}
         <button type="submit" className="btn" onClick={submitProject}>
           Submit
         </button>

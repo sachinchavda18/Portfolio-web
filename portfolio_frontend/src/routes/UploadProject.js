@@ -7,7 +7,7 @@ const UploadProject = () => {
   return (
     <div>
       <Navbar />
-      <HeroImg2 heading="UPLOAD NEW PROJECT" text="Lets Upload your work" />
+      <HeroImg2 heading="UPLOAD PROJECT" text="Lets Upload your work" />
       <UploadForm/>
       <Footer/>
     </div>

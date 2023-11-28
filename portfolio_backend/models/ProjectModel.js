@@ -12,6 +12,7 @@ const Project = new  mongoose.Schema({
     text:{
         type: String,
         required: true,
+        maxlength: 500,
     },
     view:{
         type: String,

@@ -3,6 +3,8 @@ import "../css/SingleProjectEdit.css";
 import { makeGETRequest, makePOSTRequest } from "../utils/serverHerlper";
 import { useParams, useNavigate } from "react-router-dom";
 import UploadWidget from "./UploadWidget";
+import ErrorMsg from "./ErrorMsg";
+import SuccessMsg from "./SuccessMsg";
 
 const UploadForm = () => {
   const [title, setTitle] = useState("");
@@ -14,16 +16,27 @@ const UploadForm = () => {
   const [oneProject, setOneProject] = useState([]);
   const { projectId } = useParams();
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const closeErrorSuccess = () => {
+    setError("");
+    setSuccess("");
+  };
+
   // const projectId = "65622128d931815a33789758";
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
-      const response = await makeGETRequest(
-        "/project/get/singleproject/" + projectId
-      );
-      setOneProject(response.data);
+      try {
+        const response = await makeGETRequest(
+          "/project/get/singleproject/" + projectId
+        );
+        setOneProject(response.data);
+      } catch (err) {
+        setError("Error fetching project data");
+      }
     };
     getData();
   }, [projectId]);
@@ -31,48 +44,60 @@ const UploadForm = () => {
   const item = oneProject[0] || {};
 
   const submitProject = async () => {
-    const data = {
-      title: title,
-      thumbnail: imgUrl,
-      text: text,
-      view: view,
-      source: source,
-    };
+    try {
+      const data = {
+        title: title,
+        thumbnail: imgUrl,
+        text: text,
+        view: view,
+        source: source,
+      };
 
-    if (data.title === "") {
-      data.title = item.title || "";
-    }
-    if (data.text === "") {
-      data.text = item.text || "";
-    }
-    if (data.thumbnail === "") {
-      data.thumbnail = item.thumbnail || "";
-    }
-    if (data.source === "") {
-      data.source = item.source || "";
-    }
-    if (data.view === "") {
-      data.view = item.view || "";
-    }
+      if (data.title === "") {
+        data.title = item.title || "";
+      }
+      if (data.text === "") {
+        data.text = item.text || "";
+      }
+      if (data.thumbnail === "") {
+        data.thumbnail = item.thumbnail || "";
+      }
+      if (data.source === "") {
+        data.source = item.source || "";
+      }
+      if (data.view === "") {
+        data.view = item.view || "";
+      }
 
-    const response = await makePOSTRequest(
-      "/project/update/" + projectId,
-      data
-    );
-    if (response.err) {
-      alert("Could not update Project");
-    } else {
-      alert(response.message);
-      navigate("/");
+      const response = await makePOSTRequest(
+        "/project/update/" + projectId,
+        data
+      );
+
+      if (response.err) {
+        setError("Could not update Project");
+      } else {
+        setSuccess("Project Updated.");
+        setTimeout(() => {
+          setSuccess("");
+          navigate("/");
+        }, 2000);
+      }
+    } catch (err) {
+      setError("Could not update Project");
     }
   };
 
   const deleteProject = async () => {
     try {
       await makeGETRequest("/project/delete/" + projectId);
-      navigate("/");
+      setSuccess("Project deleted successfully");
+      setTimeout(() => {
+        setSuccess("");
+        navigate("/");
+      }, 2000);
     } catch (err) {
-      alert("Could not delete Project");
+      setError("Could not delete Project");
     }
   };
 
@@ -112,6 +137,10 @@ const UploadForm = () => {
           value={text === "" ? item.text || "" : text}
           onChange={(e) => setText(e.target.value)}
         />
+        {error && <ErrorMsg errText={error} closeError={closeErrorSuccess} />}
+        {success && (
+          <SuccessMsg successText={success} closeSuccess={closeErrorSuccess} />
+        )}
         <div className="edit-btns">
           <button type="submit" className="btn" onClick={submitProject}>
             Update

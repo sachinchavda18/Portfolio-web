@@ -1,4 +1,3 @@
-// LoginForm.js
 import React, { useEffect, useState } from "react";
 import "../css/LoginFormStyle.css";
 import { FaEye, FaEyeSlash, FaSmile, FaTimes } from "react-icons/fa";
@@ -30,7 +29,7 @@ const SignupForm = () => {
         return;
       }
       const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 10 * 60 * 1000);
+      expirationDate.setTime(expirationDate.getTime() + 30 * 60 * 1000);
 
       setCookie("email", encodeEmail(email), {
         path: "/",
@@ -43,14 +42,14 @@ const SignupForm = () => {
     }
   };
   const closeError = () => {
-    setError(""); // Clear the error when closing
+    setError(""); 
   };
   const closeSignup = () => {
-    closeError(); // Close the error when closing the login form
+    closeError(); 
     navigate("/");
   };
   const handleInputChange = () => {
-    closeError(); // Clear the error when the user starts typing
+    closeError(); 
   };
 
   const encodeEmail = (email) => {
@@ -80,13 +79,14 @@ const SignupForm = () => {
         </div>
       </div> */}
       <div className="modal-wrapper"></div>
-
       <div className="modal-container">
+        <div>
         <div>
           <FaTimes size={30} onClick={closeSignup} className="close-menu" />
         </div>
         <div className="login-container">
-          <div className="form" action="">
+          <h1 className="heading-name">Sign Up</h1>
+          <div className="login-form" action="">
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -121,21 +121,21 @@ const SignupForm = () => {
                   handleInputChange();
                 }}
               />
-              {showPassword ? (
+              {/* {showPassword ? (
                 <FaEyeSlash
                   size={20}
-                  style={{ color: "white", right: " 3rem", bottom: "17.8rem" }}
+                  style={{ color: "white", right: " 33.5rem", bottom: "1.3rem" }}
                   className="password-eye"
                   onClick={() => setShowPassword(false)}
                 />
               ) : (
                 <FaEye
                   size={20}
-                  style={{ color: "white", right: " 3rem", bottom: "17.8rem"  }}
+                  style={{ color: "white", right: " 33.5rem", bottom: "1.3rem"  }}
                   className="password-eye"
                   onClick={() => setShowPassword(true)}
                 />
-              )}
+              )} */}
             </div>
             <label htmlFor="confirmPassword">Confirm Password</label>
             <div className="password-input">
@@ -149,27 +149,27 @@ const SignupForm = () => {
                   handleInputChange();
                 }}
               />
-              {showPassword ? (
+              {/* {showPassword ? (
                 <FaEyeSlash
                   size={20}
-                  style={{ color: "white" , right: " 3rem", bottom: "11.8rem" }}
+                  style={{ color: "white" , right: " 33.5rem", bottom: "-4.5rem" }}
                   className="password-eye"
                   onClick={() => setShowPassword(false)}
                 />
               ) : (
                 <FaEye
                   size={20}
-                  style={{ color: "white" , right: " 3rem", bottom: "11.8rem" }}
+                  style={{ color: "white" , right: " 33.5rem", bottom: "-4.5rem" }}
                   className="password-eye"
                   onClick={() => setShowPassword(true)}
                 />
-              )}
+              )} */}
             </div>
 
             {error && <ErrorMsg errText={error} closeError={closeError} />}
 
             <button type="submit" className="btn" onClick={handleLogin}>
-              Login
+              Sign Up
             </button>
           </div>
           <div className="additional">
@@ -182,6 +182,7 @@ const SignupForm = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

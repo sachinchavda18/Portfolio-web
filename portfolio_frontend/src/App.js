@@ -18,12 +18,14 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/project" element={<Project />} />
         <Route path="/contact" element={<Contact />} />
-        {cookie.email &&
-          ((<Route path="/upload" element={<UploadProject />} />),
-          (<Route path="/edit/:projectId" element={<ProjectEdit />} />))}
+        {cookie.email && <Route path="/upload" element={<UploadProject />} />}
 
-        <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        {cookie.email && (
+          <Route path="/edit/:projectId" element={<ProjectEdit />} />
+        )}
+
+        {!cookie.email && <Route path="/signup" element={<SignupForm />} />}
+        {!cookie.email && <Route path="/login" element={<LoginForm />} />}
 
         <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>

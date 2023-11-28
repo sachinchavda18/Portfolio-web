@@ -75,7 +75,8 @@ const LoginForm = () => {
           <FaTimes size={30} onClick={closeLogin} className="close-menu" />
         </div>
         <div className="login-container">
-          <div className="form" action="">
+        <h1 className="heading-name">Login</h1>
+          <div className="login-form" action="">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -93,7 +94,7 @@ const LoginForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {showPassword ? (
+              {/* {showPassword ? (
                 <FaEyeSlash
                   size={20}
                   style={{ color: "white", right: " 3rem", bottom: "11.8rem" }}
@@ -107,7 +108,7 @@ const LoginForm = () => {
                   className="password-eye"
                   onClick={() => setShowPassword(true)}
                 />
-              )}
+              )} */}
             </div>
             {error && <ErrorMsg errText={error} closeError={closeError} />}
             <button type="submit" className="btn" onClick={handleLogin}>

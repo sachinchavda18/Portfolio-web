@@ -36,6 +36,20 @@
 .pro-btns .btn{
     padding: .5rem 1rem ;
 }
+
+.read-more-btn{
+    /* background-color: #3498DB; */
+    color: white;
+    /* border-radius: 5px;
+    padding: 5px 10px; */
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: lowercase;
+}
+.read-more-btn:hover{
+    border-bottom:1px solid white ;
+}
 @media screen and (max-width:1024px) {
     .project-container{
         max-width: 90%;
@@ -48,3 +62,27 @@
         grid-template-columns: repeat(1,1fr);
     }
 }
+
+
+.loading-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2rem auto;
+}
+.loading-box p{
+    padding-bottom:1rem  ;
+}
+.loading-box .loading-spinner {
+    animation: spin 2.5s infinite linear;
+}
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

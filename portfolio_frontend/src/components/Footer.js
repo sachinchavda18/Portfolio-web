@@ -1,6 +1,5 @@
 import "../css/FooterStyle.css";
 import {
-  FaFacebook,
   FaLinkedin,
   FaMailBulk,
   FaPhone,

@@ -27,11 +27,6 @@ router.post("/login", async (req, res) => {
       return res.status(403).json({ err: "Invalid Credentials" });
     }
 
-    // session
-
-    req.session.userid = "1"
-    console.log(req.session.Userid)
-
     // Compare passwords directly (not recommended)
     if (password !== user.password) {
       return res.status(403).json({ err: "Invalid Credentials" });
