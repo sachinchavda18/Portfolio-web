@@ -5,6 +5,7 @@ import { makePOSTRequest } from "../utils/serverHerlper";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import ErrorMsg from "./ErrorMsg";
+import PasswordInput from "./PasswordInput";
 
 const SignupForm = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,6 @@ const SignupForm = () => {
   const [cookie, setCookie] = useCookies(["email"]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -35,21 +35,20 @@ const SignupForm = () => {
         path: "/",
         expires: expirationDate,
       });
-      // alert(response.message);
       navigate("/login");
     } catch (error) {
       setError(error);
     }
   };
   const closeError = () => {
-    setError(""); 
+    setError("");
   };
   const closeSignup = () => {
-    closeError(); 
+    closeError();
     navigate("/");
   };
   const handleInputChange = () => {
-    closeError(); 
+    closeError();
   };
 
   const encodeEmail = (email) => {
@@ -64,33 +63,34 @@ const SignupForm = () => {
 
   return (
     <div>
-      {/* <div className="modal-container">
+      <div className="modal-wrapper"></div>
+      <div className="modal-container">
         <div className="not-login">
           <div className="first-para">
             You Don't need to create account. only admin can login for upload
             new project.
           </div>
           <div>
-            Thank you. <FaSmile style={{ fontSize: "20px" }} />
+            Thank you. <FaSmile style={{ fontSize: "20px", color: "yellow" }} />
           </div>
           <Link to={"/"} className="btn go-back-home">
             Go Back to Home{" "}
           </Link>
         </div>
-      </div> */}
-      <div className="modal-wrapper"></div>
-      <div className="modal-container">
-        <div>
+      </div>
+      {/* <div className="modal-container">
         <div>
           <FaTimes size={30} onClick={closeSignup} className="close-menu" />
         </div>
         <div className="login-container">
-          <h1 className="heading-name">Sign Up</h1>
+          <h1 className="heading-name">
+            <span>Sign Up</span>
+          </h1>
           <div className="login-form" action="">
             <label htmlFor="username">Username</label>
             <input
               type="text"
-              placeholder="Enter your Username "
+              placeholder="Enter your Username"
               name="username"
               value={username}
               onChange={(e) => {
@@ -101,7 +101,7 @@ const SignupForm = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              placeholder="Enter your email "
+              placeholder="Enter your email"
               name="email"
               value={email}
               onChange={(e) => {
@@ -109,62 +109,18 @@ const SignupForm = () => {
                 handleInputChange();
               }}
             />
-            <label htmlFor="password">Password</label>
-            <div className="password-input">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password "
-                name="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  handleInputChange();
-                }}
-              />
-              {/* {showPassword ? (
-                <FaEyeSlash
-                  size={20}
-                  style={{ color: "white", right: " 33.5rem", bottom: "1.3rem" }}
-                  className="password-eye"
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaEye
-                  size={20}
-                  style={{ color: "white", right: " 33.5rem", bottom: "1.3rem"  }}
-                  className="password-eye"
-                  onClick={() => setShowPassword(true)}
-                />
-              )} */}
-            </div>
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className="password-input">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password again "
-                name="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
-                  handleInputChange();
-                }}
-              />
-              {/* {showPassword ? (
-                <FaEyeSlash
-                  size={20}
-                  style={{ color: "white" , right: " 33.5rem", bottom: "-4.5rem" }}
-                  className="password-eye"
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaEye
-                  size={20}
-                  style={{ color: "white" , right: " 33.5rem", bottom: "-4.5rem" }}
-                  className="password-eye"
-                  onClick={() => setShowPassword(true)}
-                />
-              )} */}
-            </div>
+
+            <PasswordInput
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              label="Password"
+            />
+
+            <PasswordInput
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              label="Confirm Password"
+            />
 
             {error && <ErrorMsg errText={error} closeError={closeError} />}
 
@@ -181,8 +137,7 @@ const SignupForm = () => {
             }
           </div>
         </div>
-      </div>
-    </div>
+      </div> */}
     </div>
   );
 };

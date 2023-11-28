@@ -1,11 +1,12 @@
 // LoginForm.js
 import React, { useEffect, useState } from "react";
 import "../css/LoginFormStyle.css";
-import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { makePOSTRequest } from "../utils/serverHerlper";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import ErrorMsg from "./ErrorMsg";
+import PasswordInput from "./PasswordInput";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,6 @@ const LoginForm = () => {
   const [cookie, setCookie] = useCookies(["email"]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
 
   // useEffect(() => {
   //   document.body.style.overflowY = "hidden";
@@ -75,7 +75,7 @@ const LoginForm = () => {
           <FaTimes size={30} onClick={closeLogin} className="close-menu" />
         </div>
         <div className="login-container">
-        <h1 className="heading-name">Login</h1>
+          <h1 className="heading-name"><span>Login</span></h1>
           <div className="login-form" action="">
             <label htmlFor="email">Email</label>
             <input
@@ -85,31 +85,11 @@ const LoginForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
-            <div className="password-input">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password "
-                name={"password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {/* {showPassword ? (
-                <FaEyeSlash
-                  size={20}
-                  style={{ color: "white", right: " 3rem", bottom: "11.8rem" }}
-                  className="password-eye"
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaEye
-                  size={20}
-                  style={{ color: "white", right: " 3rem", bottom: "11.8rem" }}
-                  className="password-eye"
-                  onClick={() => setShowPassword(true)}
-                />
-              )} */}
-            </div>
+            <PasswordInput
+              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             {error && <ErrorMsg errText={error} closeError={closeError} />}
             <button type="submit" className="btn" onClick={handleLogin}>
               Login

@@ -6,9 +6,12 @@ label {
     color: #fff;
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
+}
+.heading-name span{
+    padding: 0 1rem ;
+    padding-bottom: .5rem ;
+    border-bottom: 2px solid white;
+}
 .login-form {
     display: flex;
     flex-direction: column;
@@ -17,8 +20,8 @@ label {
     max-width: 600px;
 }
 
-.login-form button{
-    margin-top: .5rem ;
+.login-form button {
+    margin-top: .5rem;
 }
 
 .login-form label {
@@ -29,13 +32,14 @@ label {
 textarea {
     margin-bottom: 1rem;
     padding: 10px 18px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.1);
     color: #f4f4f4;
+    /* outline: none; */
 }
 
-.modal-wrapper{
+.modal-wrapper {
     position: fixed;
     left: 0;
     right: 0;
@@ -45,78 +49,71 @@ textarea {
     background-color: rgba(49, 49, 49, 0.9);
 }
 
-.modal-container{    
+.modal-container {
     z-index: 3;
     background-color: #000;
-    padding: 1rem 1rem ;
-    border-radius: 1rem ;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
     width: 30%;
     overflow-y: auto;
-    margin:2rem  auto;
+    margin: 2rem auto;
 }
 
 .close-menu {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: #fff;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #fff;
 }
 
-.close-menu:hover{
+.close-menu:hover {
     color: #a337ff;
 }
 
-.additional{
+.additional {
     color: #fff;
-    padding: auto ;
+    padding: auto;
     font-size: 1rem;
     line-height: 1.25rem;
     text-align: center;
-    margin:.1rem .5rem  ;
+    margin: .1rem .5rem;
 }
 
-.additional span{
+.additional span {
     color: #a337ff;
-    padding: 0 .5rem ;
+    padding: 0 .5rem;
 }
-.additional span:hover{
+
+.additional span:hover {
     cursor: pointer;
-    color:#8c6eff;
+    color: #8c6eff;
     border-bottom: 1px solid #8c6eff;
 }
 
-.not-login{
+.not-login {
     color: #fff;
     display: flex;
     flex-direction: column;
     padding: 4rem 1rem;
     margin: auto;
     max-width: 600px;
-    border-radius:1rem  ;
+    border-radius: 1rem;
 }
-.not-login div{
-    padding-bottom: 1rem  ;
+
+.not-login div {
+    padding-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.not-login .go-back-home{
+.not-login .first-para{
+    text-align: justify;
+    
+}
+
+.not-login .go-back-home {
     text-align: center;
 }
-
-.password-input{
-    width: 100%;
-}
-.password-input input{
-    width: 100%;
-}
-.password-input .password-eye{
-    position: absolute;
-    /* right: 3rem ;
-    bottom: 11.8rem ; */
-}
-
-
 
 /* Media Queries */
 @media screen and (max-width: 1024px) {
@@ -135,6 +132,7 @@ textarea {
         font-size: 1rem;
         padding: 8px 12px;
     }
+
     label {
         font-size: 0.8rem;
     }
