@@ -1,7 +1,8 @@
-import { backendUrl } from "./config";
+// import { backendUrl } from "./config";
+require("dotenv").config();
 
 export const makePOSTRequest = async (route, body) => {
-  const response = await fetch(backendUrl + route, {
+  const response = await fetch(process.env.BACKEND_URL + route, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -11,7 +12,7 @@ export const makePOSTRequest = async (route, body) => {
 };
 
 export const makeGETRequest = async (route) => {
-  const response = await fetch(backendUrl + route, {
+  const response = await fetch(process.env.BACKEND_URL + route, {
     method: "GET",
     headers: { "Content-Type": "application/json"
   },
