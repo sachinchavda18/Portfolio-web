@@ -75,7 +75,9 @@ const LoginForm = () => {
           <FaTimes size={30} onClick={closeLogin} className="close-menu" />
         </div>
         <div className="login-container">
-          <h1 className="heading-name"><span>Login</span></h1>
+          <h1 className="heading-name">
+            <span>Login</span>
+          </h1>
           <div className="login-form" action="">
             <label htmlFor="email">Email</label>
             <input

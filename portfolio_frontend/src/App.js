@@ -9,6 +9,7 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import { useCookies } from "react-cookie";
 import ProjectEdit from "./routes/ProjectEdit";
+import Skill from "./routes/Skill.js";
 function App() {
   const [cookie, setCookie] = useCookies(["email"]);
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/project" element={<Project />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/Skill" element={<Skill />} />
         {cookie.email && <Route path="/upload" element={<UploadProject />} />}
 
         {cookie.email && (

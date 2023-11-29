@@ -45,6 +45,9 @@ const Navbar = () => {
         <li>
           <Link to="/contact">Contact</Link>
         </li>
+        <li>
+          <Link to="/skill">Skill</Link>
+        </li>
         {cookie.email && (
           <li>
             <Link to="/upload">Upload</Link>{" "}
